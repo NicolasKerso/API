@@ -1,0 +1,183 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Dans ce site web, il est possible d'obtenir des informations pour se muscler en fonctions de ses objectifs mais aussi d'enregistrer son poids au fil du temps pour voir son évolution",
+    "version": "1.0.0",
+    "title": "API de mise en forme physique pour la salle de sport",
+    "contact": {
+      "email": "leleunicolas1@hotmail.fr"
+    },
+    "license": {
+      "name": "EPISEN",
+      "url": "https://episen.u-pec.fr/"
+    }
+  },
+  "servers": [
+    {
+      "url": "127.0.0.1:5000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Poids",
+      "description": "Enregistrer et observer l'évolution de son poids"
+    },
+    {
+      "name" : "Utilisateur",
+      "description" : "Enregistrer le nom et le prénom dans une BDD et session flask"
+    },
+    {
+      "name" : "Objectif",
+      "description" : "L'utilisateur peut sélectionner s'il souhaite tonifier son corps, prendre du volume, ou gagner en puissance"
+    },
+    {
+      "name" : "Groupe musculaire",
+      "description" :  "L'utilisateur sélectionne le groupe musculaire qu'il souhaite étudier ou travailler"
+    }
+  ],
+  "paths": {
+    "/Poids": {
+      "get": {
+        "tags": [
+          "Poids"
+        ],
+        "summary": "Récupère le poids entré par l'utilisateur et l'enregistre dans un fichier texte, ligne par ligne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "poids",
+            "required": true,
+            "description": "Entrer son poids",
+            "schema": {
+              "$ref": "#/components/Variables/Poids"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/Variables/Poids"
+            }
+          }
+        }
+      }
+    },
+    "/Poids/graph": {
+      "parameters": [
+        {
+          "description": "Le graphique d'évolution de notre poids se crée en fonction des valeurs enregistrés précédemment par le même utilisateur",
+          "name" : "nom_graph.png"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Poids"
+        ],
+        "summary" : "Affiche le graphique d'évolution de notre poids"
+      }
+    },
+    "/" : {
+      "post" : {
+        "tags" : [
+          "Utilisateur"
+        ],
+        "summary" : "Enregistrer son nom et son prénom",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "prénom et nom",
+            "required": true,
+            "description": "Entre ton prénom et ton nom",
+            "schema": {
+              "$ref": "#/components/Variables/identifiant"
+            }
+          }
+        ]
+      }
+    },
+    "/login " : {
+      "get" : {
+        "tags" : [
+          "Utilisateur"
+        ],
+        "summary" : "Le nom et le prénom récupéré est enregistré dans une BDD et dans la session flask"
+      }
+    },
+    "/login": {
+      "get": {
+        "tags": [
+          "Objectif"
+        ],
+        "summary" : "Selon 3 choix, l'utilisateur est redirigé vers l'objectif souhaité"
+      }
+    },
+    "/purgatoire" : {
+      "post" : {
+        "tags" : [
+          "Objectif"
+        ],
+        "summary" : "Selon le choix précedent, l'utilisateur est redirigé sur la page de la tonfication, le volume ou la puissance"
+      }
+    },
+    "/biceps" : {
+      "get" : {
+        "tags" : [
+          "Groupe musculaire"
+        ],
+        "summary" : "L'utilisateur est redirigé sur la page des informations et des exercices sur le biceps"
+      }
+    },
+    "/biceps/curl_banc_inc" : {
+      "get" : {
+        "tags" : [
+          "Groupe musculaire"
+        ],
+        "summary" : "Donne des informations sur l'exercice du curl sur banc incliné"
+      }
+    },
+    "/biceps/curl_barre" : {
+      "get" : {
+        "tags" : [
+          "Groupe musculaire"
+        ],
+        "summary" : "Donne des informations sur l'exercice du curl à la barre EZ"
+      }
+    },
+    "/triceps" : {
+      "get" : {
+        "tags" : [
+          "Groupe musculaire"
+        ],
+        "summary" : "L'utilisateur est redirigé sur la page des informations et des exercices sur le triceps"
+      }
+    }
+  },
+  "components": {
+    "Variables": {
+      "identifiant": {
+        "type": "object",
+        "properties": {
+          "prenom": {
+            "type": "string",
+            "format": "string"
+          },
+          "nom": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      },
+      "Poids": {
+        "type": "object",
+        "properties": {
+          "Poids": {
+            "type": "string",
+            "format": "number"
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html> 
+<head>
+
+<title> 
+
+</title>
+</head>
+<body>	
+<p> 
+
+<form  method="post">
+	<label for ="poids"> Poids: </label>
+  <input type="text" id="poids" name="poids" placeholder="Votre poids actuel" required >
+  <form action="/Poids" method="get" target="_blank">
+      <button type="submit">Enregistrer</button>
+    </form>
+		
+	<br>
+	
+	<form action="/Poids/graph" method="get" target="_blank">
+      <button type="submit">Observe ton évolution</button>
+    </form>
+	
+	<form action="/login" method="get" target="_blank">
+      <button type="submit">Retour</button>
+    </form>
+
+
+	
+</body>
+</html>

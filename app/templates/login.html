@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html> 
+<head>
+
+<title> 
+
+{{title}}
+
+</title>
+</head>
+<body>	
+<p> Clique sur le groupe musculaire que tu souhaites travailler : </p>
+
+	<a href="/biceps">
+	Biceps
+	</a>
+	<br>	
+	<a href="/triceps">
+	Triceps
+	</a>
+	
+	
+	<form action = "http://localhost:5000/purgatoire" method = "post">
+  <p>Si tu ne cherches pas à en savoir plus sur un groupe musculaire, tu peux me dire ce que tu cherches à faire pour ton  corps :</p>
+  <div>
+    <input type="radio" id="contactChoice1"
+     name="but" value="tonifier">
+    <label for="contactChoice1">Tonifier</label>
+
+    <input type="radio" id="contactChoice2"
+     name="but" value="volume">
+    <label for="contactChoice2">Prendre du volume</label>
+
+    <input type="radio" id="contactChoice3"
+     name="but" value="puissance">
+    <label for="contactChoice3">Gagner en puissance</label>
+  </div>
+  <div>
+    <button type="submit">Valider</button>
+  </div>
+  <p> 
+ 
+ <br>	
+	<a href="/Poids">
+	Track ton poids
+	</a>
+	
+	
+
+
+  
+</form>
+<br>
+<form action="/" method="get" target="_blank">
+      <button type="submit">Se déconnecter</button>
+    </form>
+</body>
+</html>
